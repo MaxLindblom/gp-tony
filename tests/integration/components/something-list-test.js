@@ -16,11 +16,9 @@ module('Integration | Component | something-list', function (hooks) {
 
     // Template block usage:
     await render(hbs`
-      <SomethingList>
-        template block text
-      </SomethingList>
+      <SomethingList @title="title text" @things={{@model}} />
     `);
 
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('title text');
   });
 });
