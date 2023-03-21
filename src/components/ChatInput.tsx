@@ -1,12 +1,9 @@
-import {
-  ChatCompletionRequestMessage,
-  ChatCompletionResponseMessage,
-} from "openai";
+import { ChatCompletionResponseMessage } from "openai";
 import React, { FormEvent, useState } from "react";
 import { getChatCompletion } from "../request";
 
 interface ChatInputProps {
-  messages: ChatCompletionRequestMessage[];
+  messages: ChatCompletionResponseMessage[];
   handleMessage: (message: ChatCompletionResponseMessage) => void;
 }
 
