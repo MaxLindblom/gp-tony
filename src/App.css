@@ -1,0 +1,33 @@
+body {
+  font-family: "Helvetica", Sans-Serif;
+}
+
+.column-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.row-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-header {
+  width: 100%;
+}
