@@ -1,6 +1,7 @@
 import {
   ChatCompletionRequestMessageRoleEnum,
   ChatCompletionResponseMessage,
+  ChatCompletionResponseMessageRoleEnum,
 } from "openai";
 import React, { FormEvent, useState } from "react";
 import { ChatInput } from "./components/ChatInput";
@@ -17,10 +18,15 @@ export function Chat() {
     query: string,
     onlyCode: boolean
   ) {
+    setMessages((prevState) => [
+      ...prevState,
+      { role: ChatCompletionResponseMessageRoleEnum.User, content: query },
+    ]);
     setIsLoading(true);
     try {
       const prompt = onlyCode ? `${query} Only give me the code` : query;
       getChatCompletion(messages, prompt).then((response) => {
+        // TODO: parse response and get only code snippets if onlyCode === true?
         const message = response.data.choices[0].message;
         if (message) setMessages((prevState) => [...prevState, message]);
         setIsLoading(false);

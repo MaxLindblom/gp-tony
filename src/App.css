@@ -1,6 +1,18 @@
 body {
   font-family: "Helvetica", Sans-Serif;
+  background-color: rgb(122, 93, 48, 48);
 }
+
+/*
+colors
+TODO: make into variables
+
+rgb(122, 93, 48, 48)
+rgb(251, 220, 173, 98)
+rgb(250, 190, 98, 98)
+rgb(122, 107, 84, 48)
+rgb(199, 150, 78, 78)
+*/
 
 .column-layout {
   display: flex;
@@ -32,6 +44,43 @@ body {
   width: 100%;
 }
 
+.chat-field {
+  width: 80vw;
+  background-color: rgb(122, 107, 84, 48);
+  border: 2px solid rgb(109, 109, 109);
+  padding: 1rem;
+  box-shadow: 0 0 40px rgb(199, 150, 78, 78);
+}
+
+.left-bubble-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.right-bubble-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.right-bubble-content {
+  border: 1px solid black;
+  background-color: rgb(250, 190, 98, 98);
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 85%;
+  box-shadow: 10px 10px 20px #b0541a72;
+}
+
+.left-bubble-content {
+  border: 1px solid black;
+  background-color: rgb(199, 150, 78, 78);
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 85%;
+  box-shadow: -10px 10px 20px #b0541a72;
+}
+
+/* Spinner css */
 .lds-ring {
   display: inline-block;
   position: relative;
