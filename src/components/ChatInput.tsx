@@ -1,27 +1,19 @@
-import { ChatCompletionResponseMessage } from "openai";
 import React, { FormEvent, useState } from "react";
-import { getChatCompletion } from "../request";
 
 interface ChatInputProps {
-  messages: ChatCompletionResponseMessage[];
-  handleMessage: (message: ChatCompletionResponseMessage) => void;
+  isLoading: boolean;
+  onSubmit: (event: FormEvent, query: string, onlyCode: boolean) => void;
 }
 
-export function ChatInput({ messages, handleMessage }: ChatInputProps) {
+export function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
   const [query, setQuery] = useState("");
   const [onlyCode, setOnlyCode] = useState(false);
 
-  const onSubmit = function (event: FormEvent) {
-    getChatCompletion(messages, query).then((response) => {
-      if (response.data.choices[0].message) {
-        handleMessage(response.data.choices[0].message);
-      }
-    });
-    event.preventDefault();
-  };
-
   return (
-    <form className="centered" onSubmit={onSubmit}>
+    <form
+      className="centered"
+      onSubmit={(event) => onSubmit(event, query, onlyCode)}
+    >
       <div className="column-layout">
         <label>Enter query:</label>
         <input
@@ -37,7 +29,11 @@ export function ChatInput({ messages, handleMessage }: ChatInputProps) {
           ></input>
           <label>Return only code</label>
         </div>
-        <input className="centered full-width" type="submit" />
+        <input
+          className="centered full-width"
+          type="submit"
+          disabled={isLoading}
+        />
       </div>
     </form>
   );
