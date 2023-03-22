@@ -19,7 +19,8 @@ export function Chat() {
   ) {
     setIsLoading(true);
     try {
-      getChatCompletion(messages, query).then((response) => {
+      const prompt = onlyCode ? `${query} Only give me the code` : query;
+      getChatCompletion(messages, prompt).then((response) => {
         const message = response.data.choices[0].message;
         if (message) setMessages((prevState) => [...prevState, message]);
         setIsLoading(false);
