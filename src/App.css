@@ -1,18 +1,24 @@
-body {
-  font-family: "Helvetica", Sans-Serif;
-  background-color: rgb(122, 93, 48, 48);
+:root {
+  --header-font: "Bebas Neue";
+  --body-font: "Fjalla One";
 }
 
-/*
-colors
-TODO: make into variables
+.use-header-font {
+  font-family: var(--header-font);
+}
 
-rgb(122, 93, 48, 48)
-rgb(251, 220, 173, 98)
-rgb(250, 190, 98, 98)
-rgb(122, 107, 84, 48)
-rgb(199, 150, 78, 78)
-*/
+.use-body-font {
+  font-family: var(--body-font);
+}
+
+body {
+  font-family: var(--body-font);
+}
+
+h1 {
+  font-family: var(--header-font);
+  font-size: 4rem;
+}
 
 .column-layout {
   display: flex;
@@ -44,40 +50,33 @@ rgb(199, 150, 78, 78)
   width: 100%;
 }
 
-.chat-field {
+.chat-container {
   width: 80vw;
-  background-color: rgb(122, 107, 84, 48);
   border: 2px solid rgb(109, 109, 109);
   padding: 1rem;
-  box-shadow: 0 0 40px rgb(199, 150, 78, 78);
 }
 
 .left-bubble-container {
   display: flex;
   flex-direction: row;
+  border-bottom: 2px solid black;
 }
 
 .right-bubble-container {
   display: flex;
   flex-direction: row-reverse;
+  border-bottom: 2px solid black;
 }
 
 .right-bubble-content {
-  border: 1px solid black;
-  background-color: rgb(250, 190, 98, 98);
-  border-radius: 1rem;
+  direction: rtl;
   padding: 1rem;
   max-width: 85%;
-  box-shadow: 10px 10px 20px #b0541a72;
 }
 
 .left-bubble-content {
-  border: 1px solid black;
-  background-color: rgb(199, 150, 78, 78);
-  border-radius: 1rem;
   padding: 1rem;
   max-width: 85%;
-  box-shadow: -10px 10px 20px #b0541a72;
 }
 
 /* Spinner css */
@@ -120,4 +119,46 @@ rgb(199, 150, 78, 78)
   100% {
     transform: rotate(360deg);
   }
+}
+
+.message-meta {
+  padding-block-end: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.messages {
+  padding-bottom: 2rem;
+}
+
+.input-field {
+  width: 100%;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-family: var(--body-font);
+}
+.submit-button:hover {
+  background-color: white;
+  color: black;
+}
+.submit-button:disabled {
+  background-color: lightgray;
+  color: white;
+  cursor: default;
+}
+
+.input-checkbox {
+  accent-color: black;
+  cursor: pointer;
 }

@@ -10,31 +10,33 @@ export function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
   const [onlyCode, setOnlyCode] = useState(false);
 
   return (
-    <form
-      className="centered"
-      onSubmit={(event) => onSubmit(event, query, onlyCode)}
-    >
-      <div className="column-layout">
-        <label>Enter query:</label>
-        <input
+    <div className="column-layout">
+      <form
+        className="row-layout"
+        onSubmit={(event) => onSubmit(event, query, onlyCode)}
+      >
+        <textarea
+          className="use-body-font full-width"
           value={query}
+          rows={3}
           onChange={(e) => setQuery(e.target.value)}
-          type="text"
         />
-        <div className="row-layout centered">
-          <input
-            checked={onlyCode}
-            onChange={(e) => setOnlyCode(e.target.checked)}
-            type="checkbox"
-          ></input>
-          <label>Return only code</label>
-        </div>
+        <input className="submit-button" type="submit" disabled={isLoading} />
+      </form>
+      <div className="row-layout">
         <input
-          className="centered full-width"
-          type="submit"
-          disabled={isLoading}
-        />
+          className="input-checkbox"
+          checked={onlyCode}
+          onChange={(e) => setOnlyCode(e.target.checked)}
+          type="checkbox"
+        ></input>
+        <label
+          className="underlined cursor-pointer"
+          onClick={() => setOnlyCode((isChecked) => !isChecked)}
+        >
+          Return only code
+        </label>
       </div>
-    </form>
+    </div>
   );
 }

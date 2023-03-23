@@ -46,8 +46,10 @@ export function Chat() {
 
   return (
     <div className="centered column-layout">
-      <ChatInput isLoading={isLoading} onSubmit={onSubmit} />
-      <Conversation isLoading={isLoading} messages={messages} />
+      <div className="chat-container">
+        <Conversation isLoading={isLoading} messages={messages} />
+        <ChatInput isLoading={isLoading} onSubmit={onSubmit} />
+      </div>
     </div>
   );
 }

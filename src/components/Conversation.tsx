@@ -11,7 +11,7 @@ interface ConversationProps {
 export function Conversation({ isLoading, messages }: ConversationProps) {
   if (isLoading) return <Spinner />;
   return (
-    <div className="column-layout chat-field">
+    <div className="column-layout messages">
       {messages.map((message) => {
         if (message.role === "assistant")
           return <ResponseBubble message={message.content} />;
