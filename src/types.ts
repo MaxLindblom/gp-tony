@@ -1,6 +1,5 @@
-import { ChatCompletionRequestMessageRoleEnum } from "openai";
+import { ChatCompletionResponseMessage } from "openai";
 
-export interface Message {
-  role: ChatCompletionRequestMessageRoleEnum;
-  content: string;
+export interface Message extends ChatCompletionResponseMessage {
+  timestamp: Date;
 }

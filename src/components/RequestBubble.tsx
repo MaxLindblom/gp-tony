@@ -1,16 +1,16 @@
+import { Message } from "../types";
 import { MessageMeta } from "./MessageMeta";
 
 interface RequestBubbleProps {
-  message: string;
+  message: Message;
 }
 
 export function RequestBubble({ message }: RequestBubbleProps) {
-  const current = new Date();
   return (
     <div className="right-bubble-container">
       <div className="right-bubble-content">
-        <MessageMeta user={"You"} timestamp={current} />
-        {message}
+        <MessageMeta user={"You"} timestamp={message.timestamp} />
+        {message.content}
       </div>
     </div>
   );

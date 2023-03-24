@@ -1,11 +1,11 @@
-import { ChatCompletionResponseMessage } from "openai";
+import { Message } from "../types";
 import { RequestBubble } from "./RequestBubble";
 import { ResponseBubble } from "./ResponseBubble";
 import { Spinner } from "./Spinner";
 
 interface ConversationProps {
   isLoading: boolean;
-  messages: ChatCompletionResponseMessage[];
+  messages: Message[];
 }
 
 export function Conversation({ isLoading, messages }: ConversationProps) {
@@ -14,9 +14,8 @@ export function Conversation({ isLoading, messages }: ConversationProps) {
     <div className="column-layout messages">
       {messages.map((message) => {
         if (message.role === "assistant")
-          return <ResponseBubble message={message.content} />;
-        if (message.role === "user")
-          return <RequestBubble message={message.content} />;
+          return <ResponseBubble message={message} />;
+        if (message.role === "user") return <RequestBubble message={message} />;
         return null;
       })}
     </div>
