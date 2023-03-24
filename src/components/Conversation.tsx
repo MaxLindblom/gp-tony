@@ -1,7 +1,6 @@
 import { Message } from "../types";
 import { RequestBubble } from "./RequestBubble";
 import { ResponseBubble } from "./ResponseBubble";
-import { Spinner } from "./Spinner";
 
 interface ConversationProps {
   isLoading: boolean;
@@ -9,7 +8,6 @@ interface ConversationProps {
 }
 
 export function Conversation({ isLoading, messages }: ConversationProps) {
-  if (isLoading) return <Spinner />;
   return (
     <div className="column-layout messages">
       {messages.map((message) => {
@@ -29,6 +27,11 @@ export function Conversation({ isLoading, messages }: ConversationProps) {
           );
         return null;
       })}
+      {isLoading && (
+        <div style={{ padding: "1rem" }}>
+          <div className="loading">Pondering</div>
+        </div>
+      )}
     </div>
   );
 }
