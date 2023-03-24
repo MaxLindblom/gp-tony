@@ -25,7 +25,7 @@ export function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
     <div className="column-layout">
       <form className="row-layout" onSubmit={handleSubmit}>
         <textarea
-          className="use-body-font full-width"
+          className="input-textarea"
           value={query}
           rows={3}
           onChange={(e) => setQuery(e.target.value)}
