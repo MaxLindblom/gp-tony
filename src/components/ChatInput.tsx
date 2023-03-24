@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { KeyboardEvent, FormEvent, useState } from "react";
 
 interface ChatInputProps {
   isLoading: boolean;
@@ -9,19 +9,34 @@ export function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
   const [query, setQuery] = useState("");
   const [onlyCode, setOnlyCode] = useState(false);
 
+  const handleKeyDown = function (event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (event.key === "Enter") {
+      document.getElementById("submit-button")?.click();
+      event.preventDefault();
+    }
+  };
+
+  const handleSubmit = function (event: FormEvent) {
+    onSubmit(event, query, onlyCode);
+    setQuery("");
+  };
+
   return (
     <div className="column-layout">
-      <form
-        className="row-layout"
-        onSubmit={(event) => onSubmit(event, query, onlyCode)}
-      >
+      <form className="row-layout" onSubmit={handleSubmit}>
         <textarea
           className="use-body-font full-width"
           value={query}
           rows={3}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
-        <input className="submit-button" type="submit" disabled={isLoading} />
+        <input
+          className="submit-button"
+          id="submit-button"
+          type="submit"
+          disabled={isLoading}
+        />
       </form>
       <div className="row-layout">
         <input
