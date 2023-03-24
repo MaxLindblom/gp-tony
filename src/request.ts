@@ -10,6 +10,8 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+// TODO: using this thru the browser is unsafe, it reveals thje api key
+// Consider moving this to a backend call maybe?
 export const getChatCompletion = (messages: Message[], query: string) => {
   const newPrompt = {
     role: ChatCompletionRequestMessageRoleEnum.User,
