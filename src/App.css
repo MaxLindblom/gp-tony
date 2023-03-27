@@ -134,18 +134,18 @@ pre {
   cursor: pointer;
 }
 
-.submit-button {
+.button {
   background-color: black;
   color: white;
   cursor: pointer;
   font-family: var(--body-font);
   border: var(--standard-border);
 }
-.submit-button:hover {
+.button:hover {
   background-color: white;
   color: black;
 }
-.submit-button:disabled {
+.button:disabled {
   background-color: lightgray;
   color: white;
   cursor: default;

@@ -3,9 +3,10 @@ import React, { KeyboardEvent, FormEvent, useState } from "react";
 interface ChatInputProps {
   isLoading: boolean;
   onSubmit: (event: FormEvent, query: string, onlyCode: boolean) => void;
+  onClear: () => void;
 }
 
-export function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
+export function ChatInput({ isLoading, onSubmit, onClear }: ChatInputProps) {
   const [query, setQuery] = useState("");
   const [onlyCode, setOnlyCode] = useState(false);
 
@@ -32,7 +33,7 @@ export function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
           onKeyDown={handleKeyDown}
         />
         <input
-          className="submit-button"
+          className="button"
           id="submit-button"
           type="submit"
           disabled={isLoading}
@@ -51,6 +52,9 @@ export function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
         >
           Return only code
         </label>
+        <button className="button" onClick={onClear}>
+          Clear chat
+        </button>
       </div>
     </div>
   );

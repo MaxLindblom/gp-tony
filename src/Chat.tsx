@@ -56,11 +56,19 @@ export function Chat() {
     event.preventDefault();
   };
 
+  const onClear = function () {
+    setMessages([]);
+  };
+
   return (
     <div className="centered column-layout">
       <div className="chat-container">
         <Conversation isLoading={isLoading} messages={messages} />
-        <ChatInput isLoading={isLoading} onSubmit={onSubmit} />
+        <ChatInput
+          isLoading={isLoading}
+          onSubmit={onSubmit}
+          onClear={onClear}
+        />
       </div>
     </div>
   );
