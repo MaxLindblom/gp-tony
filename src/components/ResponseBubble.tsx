@@ -61,7 +61,7 @@ export function ResponseBubble({ message }: ResponseBubbleProps) {
             }
             return generateCodeSnippet(match, idx);
           })}
-          {!endsWithCode && (
+          {!endsWithCode && matches !== null && (
             <ReactMarkdown
               children={message.content.split("```").slice(-1)[0]}
               remarkPlugins={[remarkGfm]}
