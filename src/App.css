@@ -78,14 +78,21 @@ pre {
 }
 
 .right-bubble-content {
-  direction: rtl;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
   padding: 1rem;
-  max-width: 85%;
+  max-width: 80%;
+}
+
+.right-bubble-message {
+  text-align: right;
+  padding: 1rem 0;
 }
 
 .left-bubble-content {
   padding: 1rem;
-  max-width: 85%;
+  max-width: 80%;
 }
 
 .loading {

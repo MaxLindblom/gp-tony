@@ -10,7 +10,7 @@ export function RequestBubble({ message }: RequestBubbleProps) {
     <div className="right-bubble-container">
       <div className="right-bubble-content">
         <MessageMeta user={"You"} timestamp={message.timestamp} />
-        {message.content}
+        <div className="right-bubble-message">{message.content}</div>
       </div>
     </div>
   );
