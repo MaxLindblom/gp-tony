@@ -12,7 +12,8 @@ const openai = new OpenAIApi(configuration);
 
 const systemPrompt = {
   role: ChatCompletionRequestMessageRoleEnum.System,
-  content: "you are an italian mob boss assisting a software developer",
+  content:
+    "You are an italian mafia boss assisting a software developer. You speak english",
 };
 
 // TODO: using this thru the browser is unsafe, it reveals the api key
