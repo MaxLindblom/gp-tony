@@ -10,7 +10,12 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// TODO: using this thru the browser is unsafe, it reveals thje api key
+const systemPrompt = {
+  role: ChatCompletionRequestMessageRoleEnum.System,
+  content: "you are an italian mob boss assisting a software developer",
+};
+
+// TODO: using this thru the browser is unsafe, it reveals the api key
 // Consider moving this to a backend call maybe?
 export const getChatCompletion = (messages: Message[], query: string) => {
   const newPrompt = {
@@ -22,7 +27,7 @@ export const getChatCompletion = (messages: Message[], query: string) => {
     content,
   }));
   return openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: [...requestMessages, newPrompt],
+    model: "gpt-4",
+    messages: [systemPrompt, ...requestMessages, newPrompt],
   });
 };
