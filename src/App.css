@@ -22,7 +22,7 @@ h1 {
 }
 
 pre {
-  white-space: pre-line;
+  white-space: pre-wrap;
   font-family: var(--body-font);
   display: flex;
   flex-direction: column;
@@ -196,4 +196,8 @@ pre {
 .copy-image {
   width: 2rem;
   height: 2rem;
+}
+
+code {
+  font-size: 1.1rem;
 }
