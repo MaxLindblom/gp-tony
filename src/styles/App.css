@@ -2,14 +2,7 @@
   --header-font: "Bebas Neue";
   --body-font: "Fjalla One";
   --standard-border: 2px solid black;
-}
-
-.use-header-font {
-  font-family: var(--header-font);
-}
-
-.use-body-font {
-  font-family: var(--body-font);
+  --header-height: 20vh;
 }
 
 body {
@@ -38,6 +31,18 @@ p {
 
 a {
   color: black;
+}
+
+code {
+  font-size: 1.1rem;
+}
+
+.use-header-font {
+  font-family: var(--header-font);
+}
+
+.use-body-font {
+  font-family: var(--body-font);
 }
 
 .column-layout {
@@ -192,6 +197,22 @@ a {
   height: 2rem;
 }
 
-code {
-  font-size: 1.1rem;
+.header-wrapper {
+  height: var(--header-height);
+  margin-bottom: 1rem;
+}
+
+#header {
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  height: var(--header-height);
+  top: 0;
+  left: 0;
+  font-family: var(--header-font);
+  font-size: 4rem;
+  border-bottom: 4px solid black;
+  transition: 150ms;
+  margin: 0;
+  z-index: 10;
 }
