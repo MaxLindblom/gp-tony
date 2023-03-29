@@ -26,6 +26,7 @@ export function ChatInput({ isLoading, onSubmit, onClear }: ChatInputProps) {
     <div className="column-layout">
       <form className="row-layout" onSubmit={handleSubmit}>
         <textarea
+          id="input-textarea"
           className="input-textarea"
           value={query}
           rows={3}

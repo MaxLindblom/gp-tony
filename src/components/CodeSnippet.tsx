@@ -33,7 +33,7 @@ export function CodeSnippet({ text, idx }: CodeSnippetProps) {
         <code>{displayString}</code>
       </pre>
       <button
-        className="copy-image-button"
+        className="copy-image-button image-button"
         onClick={() => onClickCopy(displayString)}
       >
         <img

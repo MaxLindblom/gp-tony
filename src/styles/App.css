@@ -9,12 +9,6 @@ body {
   font-family: var(--body-font);
 }
 
-h1 {
-  font-family: var(--header-font);
-  font-size: 4rem;
-  border-bottom: 4px solid black;
-}
-
 pre {
   white-space: pre-wrap;
   font-family: var(--body-font);
@@ -179,17 +173,20 @@ code {
   margin: 0.3rem 0;
 }
 
+.image-button {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+.image-button:hover {
+  filter: invert(1);
+}
+
 .copy-image-button {
   position: absolute;
-  cursor: pointer;
   top: 0.5rem;
   right: 0.5rem;
   padding: 4px 1px 1px 1px;
-  border: none;
-  background-color: white;
-}
-.copy-image-button:hover {
-  filter: invert(1);
 }
 
 .copy-image {
@@ -197,12 +194,25 @@ code {
   height: 2rem;
 }
 
+.scroll-to-bottom-button {
+  padding: 2px;
+  float: right;
+}
+
+.scroll-to-bottom-image {
+  height: calc((var(--header-height) / 4) + 10px);
+}
+
 .header-wrapper {
   height: var(--header-height);
   margin-bottom: 1rem;
+  background-color: white;
+  z-index: 10;
 }
 
-#header {
+.header {
+  display: flex;
+  text-align: center;
   position: fixed;
   background-color: white;
   width: 100%;
@@ -215,4 +225,18 @@ code {
   transition: 150ms;
   margin: 0;
   z-index: 10;
+}
+
+.header-title {
+  width: 100%;
+}
+
+.header-right {
+  float: right;
+  width: 15vh;
+}
+
+.header-left {
+  float: left;
+  width: 15vh;
 }

@@ -3,17 +3,14 @@ import "./styles/App.css";
 import "./styles/Animations.css";
 import { Chat } from "./Chat";
 import useScroll from "./hooks/useScroll";
+import Header from "./components/Header";
 
 export default function App() {
   window.onscroll = useScroll;
 
   return (
     <div className="App">
-      <div className="header-wrapper">
-        <h1 className="centered" id="header">
-          GPTony
-        </h1>
-      </div>
+      <Header />
       <Chat />
     </div>
   );
