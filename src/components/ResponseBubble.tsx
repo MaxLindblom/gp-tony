@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { Message } from "../types";
 import { MessageMeta } from "./MessageMeta";
 import remarkGfm from "remark-gfm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ResponseBubbleProps {
   message: Message;
@@ -46,6 +46,13 @@ export function ResponseBubble({ message }: ResponseBubbleProps) {
   const startsWithCode = message.content.startsWith("```");
   const endsWithCode = message.content.endsWith("```");
   const modOperand = startsWithCode ? 0 : 1;
+
+  useEffect(() => {
+    const links = document.getElementsByTagName("a");
+    for (var i = 0; i < links.length; i++) {
+      links[i].setAttribute("target", "_blank");
+    }
+  });
 
   const onClickCopy = function (text: string) {
     setIsClicked(true);
