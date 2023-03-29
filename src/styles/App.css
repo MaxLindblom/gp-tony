@@ -33,7 +33,7 @@ pre {
 }
 
 p {
-  margin: 0;
+  margin: 0.5rem 0;
 }
 
 a {
@@ -84,6 +84,8 @@ a {
 }
 
 .messages {
+  display: flex;
+  gap: 1rem;
   padding-bottom: 2rem;
 }
 
@@ -123,31 +125,6 @@ a {
 
 .right-bubble-message {
   text-align: right;
-}
-
-.loading {
-  font-size: 1.5rem;
-}
-.loading:after {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: bottom;
-  -webkit-animation: ellipsis steps(4, end) 1200ms infinite;
-  animation: ellipsis steps(4, end) 1200ms infinite;
-  content: "\2026"; /* ascii code for the ellipsis character */
-  width: 0px;
-}
-
-@keyframes ellipsis {
-  to {
-    width: 1.5rem;
-  }
-}
-
-@-webkit-keyframes ellipsis {
-  to {
-    width: 1.5rem;
-  }
 }
 
 .input-field {
@@ -194,6 +171,7 @@ a {
   position: relative;
   padding: 0.5rem;
   padding-right: 4rem;
+  margin: 0.3rem 0;
 }
 
 .copy-image-button {
@@ -216,20 +194,4 @@ a {
 
 code {
   font-size: 1.1rem;
-}
-
-@keyframes copy-animation {
-  0% {
-    transform: none;
-  }
-  50% {
-    transform: translate(2px, 1px);
-  }
-  100% {
-    transform: none;
-  }
-}
-
-.copy-animated {
-  animation: copy-animation 200ms;
 }

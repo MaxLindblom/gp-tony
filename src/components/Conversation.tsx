@@ -25,7 +25,7 @@ export function Conversation({ isLoading, messages }: ConversationProps) {
               message={message}
             />
           );
-        return null;
+        return false;
       })}
       {isLoading && (
         <div style={{ padding: "1rem" }}>
