@@ -1,12 +1,12 @@
 interface MessageMetaProps {
   user: string;
-  timestamp: Date;
+  timestamp: string;
 }
 
 export function MessageMeta({ user, timestamp }: MessageMetaProps) {
   return (
     <div className="message-meta">
-      {user}, {timestamp.toISOString()}
+      {user}, {timestamp}
     </div>
   );
 }

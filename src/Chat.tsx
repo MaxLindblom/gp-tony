@@ -2,16 +2,22 @@ import {
   ChatCompletionRequestMessageRoleEnum,
   ChatCompletionResponseMessageRoleEnum,
 } from "openai";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { ChatInput } from "./components/ChatInput";
 import { Conversation } from "./components/Conversation";
 import { getErrorMessage } from "./error";
+import useLocalState from "./hooks/useLocalState";
 import { getChatCompletion } from "./request";
 import { Message } from "./types";
 
 export function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { load, clear } = useLocalState(messages);
+
+  useEffect(() => {
+    setMessages(load());
+  }, []);
 
   const onSubmit = async function (
     event: FormEvent,
@@ -23,7 +29,7 @@ export function Chat() {
       {
         role: ChatCompletionResponseMessageRoleEnum.User,
         content: query,
-        timestamp: new Date(),
+        timestamp: new Date().toISOString(),
       },
     ]);
     setIsLoading(true);
@@ -35,7 +41,7 @@ export function Chat() {
         if (message) {
           setMessages((prevState) => [
             ...prevState,
-            { ...message, timestamp: new Date() },
+            { ...message, timestamp: new Date().toISOString() },
           ]);
           setIsLoading(false);
           return;
@@ -48,7 +54,7 @@ export function Chat() {
         {
           role: ChatCompletionRequestMessageRoleEnum.System,
           content: getErrorMessage(error),
-          timestamp: new Date(),
+          timestamp: new Date().toISOString(),
         },
       ]);
       setIsLoading(false);
@@ -58,6 +64,7 @@ export function Chat() {
 
   const onClear = function () {
     setMessages([]);
+    clear();
   };
 
   return (
