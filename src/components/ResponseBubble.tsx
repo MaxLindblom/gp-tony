@@ -2,12 +2,16 @@ import ReactMarkdown from "react-markdown";
 import { Message } from "../types";
 import { MessageMeta } from "./MessageMeta";
 import remarkGfm from "remark-gfm";
+import { useState } from "react";
 
 interface ResponseBubbleProps {
   message: Message;
 }
 
-const generateCodeSnippet = function (match: string, idx: number) {
+const generateCodeSnippet = function (
+  match: string,
+  onClick: (text: string) => void
+) {
   var index = match.indexOf("\n");
   let displayString: string;
   if (index >= 0) {
@@ -16,13 +20,13 @@ const generateCodeSnippet = function (match: string, idx: number) {
     displayString = match;
   }
   return (
-    <div key={`code-snippet-${idx}`} className="code-snippet">
+    <>
       <pre>
-        <code className="language-javascript">{displayString}</code>
+        <code>{displayString}</code>
       </pre>
       <button
         className="copy-image-button"
-        onClick={() => navigator.clipboard.writeText(displayString)}
+        onClick={() => onClick(displayString)}
       >
         <img
           className="copy-image"
@@ -31,16 +35,26 @@ const generateCodeSnippet = function (match: string, idx: number) {
           title="Copy to clipboard"
         />
       </button>
-    </div>
+    </>
   );
 };
 
 export function ResponseBubble({ message }: ResponseBubbleProps) {
+  const [isClicked, setIsClicked] = useState(false);
   const regex = /(?<=```)[\s\S]*?(?=```)/g;
   const matches = message.content.match(regex);
   const startsWithCode = message.content.startsWith("```");
   const endsWithCode = message.content.endsWith("```");
   const modOperand = startsWithCode ? 0 : 1;
+
+  const onClickCopy = function (text: string) {
+    setIsClicked(true);
+    navigator.clipboard.writeText(text);
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 200);
+  };
+
   return (
     <div className="left-bubble-container">
       <div className="left-bubble-content">
@@ -53,13 +67,19 @@ export function ResponseBubble({ message }: ResponseBubbleProps) {
             />
           )}
           {matches?.map((match, idx) => {
-            console.log("logging", match);
             if (idx % 2 === modOperand) {
               return (
                 <ReactMarkdown children={match} remarkPlugins={[remarkGfm]} />
               );
             }
-            return generateCodeSnippet(match, idx);
+            return (
+              <div
+                key={`code-snippet-${idx}`}
+                className={`code-snippet ${isClicked ? "copy-animated" : ""}`}
+              >
+                {generateCodeSnippet(match, onClickCopy)}
+              </div>
+            );
           })}
           {!endsWithCode && matches !== null && (
             <ReactMarkdown

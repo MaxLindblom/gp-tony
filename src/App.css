@@ -19,6 +19,7 @@ body {
 h1 {
   font-family: var(--header-font);
   font-size: 4rem;
+  border-bottom: 4px solid black;
 }
 
 pre {
@@ -27,6 +28,16 @@ pre {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 1rem;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: black;
 }
 
 .column-layout {
@@ -55,44 +66,63 @@ pre {
   justify-content: center;
 }
 
+.underlined {
+  text-decoration: underline;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .app-header {
   width: 100%;
 }
 
 .chat-container {
   width: 80vw;
-  border-top: var(--standard-border);
   margin: 1rem;
+}
+
+.messages {
+  padding-bottom: 2rem;
+}
+
+.message-meta {
+  border-bottom: var(--standard-border);
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  max-width: 100%;
 }
 
 .left-bubble-container {
   display: flex;
   flex-direction: row;
-  border-bottom: var(--standard-border);
+}
+
+.left-bubble-content {
+  border: var(--standard-border);
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
+  border-radius: 2px;
+  max-width: 80%;
 }
 
 .right-bubble-container {
   display: flex;
   flex-direction: row-reverse;
-  border-bottom: var(--standard-border);
 }
 
 .right-bubble-content {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  padding: 1rem;
+  text-align: right;
+  border: var(--standard-border);
+  border-bottom: 4px solid black;
+  border-left: 4px solid black;
+  border-radius: 2px;
   max-width: 80%;
 }
 
 .right-bubble-message {
   text-align: right;
-  padding: 1rem 0;
-}
-
-.left-bubble-content {
-  padding: 1rem;
-  max-width: 80%;
 }
 
 .loading {
@@ -120,25 +150,8 @@ pre {
   }
 }
 
-.message-meta {
-  padding-block-end: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.messages {
-  padding-bottom: 2rem;
-}
-
 .input-field {
   width: 100%;
-}
-
-.underlined {
-  text-decoration: underline;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 
 .button {
@@ -173,7 +186,10 @@ pre {
 }
 
 .code-snippet {
-  border: 1px solid black;
+  border: var(--standard-border);
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
+  border-radius: 1px;
   display: flex;
   position: relative;
   padding: 0.5rem;
@@ -200,4 +216,20 @@ pre {
 
 code {
   font-size: 1.1rem;
+}
+
+@keyframes copy-animation {
+  0% {
+    transform: none;
+  }
+  50% {
+    transform: translate(2px, 1px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.copy-animated {
+  animation: copy-animation 200ms;
 }
