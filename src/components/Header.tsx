@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useClickOutside from "../hooks/useClickOutside";
 import Menu from "./Menu";
 
 export default function Header() {
+  const menuRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleClickMenuButton = function () {
+  useClickOutside(menuRef, () => setIsMenuOpen(false));
+
+  const handleClickMenuButton = function (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
     setIsMenuOpen((prev) => !prev);
+    event.preventDefault();
   };
 
   const handleClickScrollButton = function () {
@@ -24,7 +31,7 @@ export default function Header() {
   };
 
   return (
-    <div className="header-wrapper">
+    <div ref={menuRef} className="header-wrapper">
       <div className="header centered" id="header">
         <div className="header-left centered">
           <button
@@ -37,7 +44,7 @@ export default function Header() {
               }`}
               src={require("../images/cross.png")}
               alt="Menu button"
-              title="Menu button"
+              title="Toggle menu"
             />
           </button>
         </div>
