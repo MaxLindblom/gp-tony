@@ -196,10 +196,22 @@ code {
 
 .scroll-to-bottom-button {
   padding: 2px;
-  float: right;
 }
 
-.scroll-to-bottom-image {
+.menu-button {
+  padding: 6px;
+}
+
+.menu-image {
+  transform: rotate(45deg);
+  transition: 400ms;
+}
+
+.rotated {
+  transform: rotate(-90deg);
+}
+
+.header-image {
   height: calc((var(--header-height) / 4) + 10px);
 }
 
@@ -239,4 +251,29 @@ code {
 .header-left {
   float: left;
   width: 15vh;
+}
+
+.menu-wrapper {
+  background-color: white;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 500px;
+  height: calc(100% - var(--header-height));
+  max-width: 30vh;
+  border-top: 4px solid black;
+  border-right: 4px solid black;
+}
+
+.menu {
+  gap: 0;
+}
+
+.menu-item {
+  width: 100%;
+  border-top: 2px solid black;
+  font-size: 5rem;
+}
+.menu-item + .menu-item {
+  border-bottom: 2px solid black;
 }

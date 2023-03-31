@@ -3,7 +3,7 @@ import "./styles/App.css";
 import "./styles/Animations.css";
 import { Chat } from "./Chat";
 import useScroll from "./hooks/useScroll";
-import Header from "./components/Header";
+import Header from "./Header";
 
 export default function App() {
   window.onscroll = useScroll;
