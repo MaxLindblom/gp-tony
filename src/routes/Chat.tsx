@@ -3,12 +3,12 @@ import {
   ChatCompletionResponseMessageRoleEnum,
 } from "openai";
 import React, { FormEvent, useEffect, useState } from "react";
-import { ChatInput } from "./components/ChatInput";
-import { Conversation } from "./components/Conversation";
-import { getErrorMessage } from "./error";
-import useLocalState from "./hooks/useLocalState";
-import { getChatCompletion } from "./request";
-import { Message } from "./types";
+import { ChatInput } from "../components/ChatInput";
+import { Conversation } from "../components/Conversation";
+import { getErrorMessage } from "../error";
+import useLocalState from "../hooks/useLocalState";
+import { getChatCompletion } from "../request";
+import { Message } from "../types";
 
 export function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);

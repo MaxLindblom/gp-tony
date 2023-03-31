@@ -277,3 +277,7 @@ code {
 .menu-item + .menu-item {
   border-bottom: 2px solid black;
 }
+
+.menu-item a {
+  text-decoration: none;
+}

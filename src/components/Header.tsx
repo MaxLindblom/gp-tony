@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Menu from "./components/Menu";
+import Menu from "./Menu";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,13 +35,13 @@ export default function Header() {
               className={`header-image menu-image ${
                 isMenuOpen ? "rotated" : ""
               }`}
-              src={require("./images/cross.png")}
+              src={require("../images/cross.png")}
               alt="Menu button"
               title="Menu button"
             />
           </button>
         </div>
-        {isMenuOpen ? <Menu></Menu> : false}
+        {isMenuOpen ? <Menu /> : false}
         <div className="header-title">GPTony</div>
         <div className="header-right centered">
           <button
@@ -50,7 +50,7 @@ export default function Header() {
           >
             <img
               className="header-image"
-              src={require("./images/arrow-down.png")}
+              src={require("../images/arrow-down.png")}
               alt="Scroll to bottom"
               title="Scroll to bottom"
             />
