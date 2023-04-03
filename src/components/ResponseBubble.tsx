@@ -37,10 +37,14 @@ export function ResponseBubble({ message }: ResponseBubbleProps) {
           {matches?.map((match, idx) => {
             if (idx % 2 === modOperand) {
               return (
-                <ReactMarkdown children={match} remarkPlugins={[remarkGfm]} />
+                <ReactMarkdown
+                  key={`markdown-${idx}`}
+                  children={match}
+                  remarkPlugins={[remarkGfm]}
+                />
               );
             }
-            return <CodeSnippet text={match} idx={idx} />;
+            return <CodeSnippet key={`code-snippet-${idx}`} text={match} />;
           })}
           {!endsWithCode && matches !== null && (
             <ReactMarkdown

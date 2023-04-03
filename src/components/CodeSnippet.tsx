@@ -2,10 +2,9 @@ import { useState } from "react";
 
 interface CodeSnippetProps {
   text: string;
-  idx: number;
 }
 
-export function CodeSnippet({ text, idx }: CodeSnippetProps) {
+export function CodeSnippet({ text }: CodeSnippetProps) {
   const [isClicked, setIsClicked] = useState(false);
 
   const onClickCopy = function (text: string) {
@@ -25,10 +24,7 @@ export function CodeSnippet({ text, idx }: CodeSnippetProps) {
   }
 
   return (
-    <div
-      key={`code-snippet-${idx}`}
-      className={`code-snippet ${isClicked ? "copy-animated" : ""}`}
-    >
+    <div className={`code-snippet ${isClicked ? "copy-animated" : ""}`}>
       <pre>
         <code>{displayString}</code>
       </pre>
