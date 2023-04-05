@@ -8,7 +8,7 @@ export function Home() {
         <p>
           This is a web-based wrapper for chatGPT, using the{" "}
           <a href="https://platform.openai.com/docs/guides/chat" target="blank">
-            openai Chat completions API
+            openai chat completions API
           </a>
           . It behaves mostly the same way as the regular chatGPT chat but with
           some fun alterations, all packaged within a beautiful brutalist UI.
@@ -39,7 +39,7 @@ export function Home() {
         </p>
         <p>
           The first thing to do would be to set up your API key. Read more about
-          that on <Link to="/config">the Config page</Link>. If that's already
+          that on <Link to="/config">the config page</Link>. If that's already
           set up, jump right in to <Link to="/chat">the chat</Link>!
         </p>
       </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PopUp } from "../components/PopUp";
+import { setModel } from "../request";
 import { API_STORAGE_KEY, getSavedApiKey, setApiKey } from "../storage";
 
 interface ApiKeyState {
@@ -24,6 +25,10 @@ export function Config() {
     } else {
       setApiKeyState({ exists: false, lastFour: "" });
     }
+  };
+
+  const setNewModel = function (model: string) {
+    setModel(model);
   };
 
   const onClickSet = function () {
@@ -76,6 +81,21 @@ export function Config() {
           ></input>
           <button className="button" type="button" onClick={onClickSet}>
             Set
+          </button>
+        </div>
+        <p>
+          GPTony uses the gpt-4 model by default. If you don't have access to
+          it, you can use the earlier gpt-3.5-turbo model instead:
+        </p>
+        <div className="row-layout">
+          <button className="button" onClick={() => setNewModel("gpt-4")}>
+            Use gpt-4
+          </button>
+          <button
+            className="button"
+            onClick={() => setNewModel("gpt-3.5-turbo")}
+          >
+            Use gpt-3.5-turbo
           </button>
         </div>
       </div>

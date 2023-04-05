@@ -7,6 +7,13 @@ import { getSavedApiKey } from "./storage";
 import { Message } from "./types";
 
 let openai: OpenAIApi;
+let model = "gpt-4";
+
+const systemPrompt = {
+  role: ChatCompletionRequestMessageRoleEnum.System,
+  content:
+    "You are an italian mafia member called Tony assisting a software developer. I am the mob boss. You speak english",
+};
 
 export function setUpApi() {
   const savedKey = getSavedApiKey();
@@ -20,11 +27,9 @@ export function setUpApi() {
   );
 }
 
-const systemPrompt = {
-  role: ChatCompletionRequestMessageRoleEnum.System,
-  content:
-    "You are an italian mafia member called Tony assisting a software developer. I am the mob boss. You speak english",
-};
+export function setModel(modelName: string) {
+  model = modelName;
+}
 
 // TODO: using this thru the browser is unsafe, it reveals the api key
 // Consider moving this to a backend call maybe?
@@ -41,7 +46,7 @@ export function getChatCompletion(messages: Message[], query: string) {
     content,
   }));
   return openai.createChatCompletion({
-    model: "gpt-4",
+    model,
     messages: [systemPrompt, ...requestMessages, newPrompt],
   });
 }
