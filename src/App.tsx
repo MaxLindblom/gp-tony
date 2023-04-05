@@ -7,9 +7,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./routes/Layout";
 import { Config } from "./routes/Config";
 import { Home } from "./routes/Home";
+import useDebounce from "./hooks/useDebounce";
 
 export default function App() {
-  window.onscroll = useScroll;
+  window.onscroll = useDebounce(80, useScroll);
 
   return (
     <div className="App">

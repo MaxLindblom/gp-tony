@@ -10,3 +10,5 @@ export const getSavedApiKey = (): string | null => {
 
 export const setApiKey = (key: string) =>
   localStorage.setItem(API_STORAGE_KEY, JSON.stringify(key));
+
+export const clearApiKey = () => localStorage.removeItem(API_STORAGE_KEY);

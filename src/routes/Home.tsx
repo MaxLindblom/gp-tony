@@ -45,6 +45,21 @@ export function Home() {
           </p>
         </div>
         <div>
+          <p className="bold">
+            ALSO NOTE: GPTony is client-side only, and exposes your API key in
+            the request header. It is saved in your browser's local storage.
+          </p>
+        </div>
+        <div>
+          <p>
+            Your key will be saved between sessions, and as with all local
+            storage, will remain until it's explicitly cleared. You can clear
+            your key in the config page if you wish. The other thing that's
+            stored is the current conversation, also in local storage. Other
+            than that, no data is kept about you or your session.
+          </p>
+        </div>
+        <div>
           <p>
             In the chat window, you have the option to make Tony only respond
             with code. This is experimental, and what it does is append a prompt

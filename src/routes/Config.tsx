@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { PopUp } from "../components/PopUp";
 import { setModel } from "../request";
-import { API_STORAGE_KEY, getSavedApiKey, setApiKey } from "../storage";
+import {
+  API_STORAGE_KEY,
+  clearApiKey,
+  getSavedApiKey,
+  setApiKey,
+} from "../storage";
 
 interface ApiKeyState {
   exists: boolean;
@@ -12,23 +17,22 @@ let message: string;
 
 export function Config() {
   const [isActive, setIsActive] = useState(false);
-  const [apiKeyState, setApiKeyState] = useState<ApiKeyState>({
-    exists: false,
-    lastFour: "",
-  });
   const [inputValue, setInputValue] = useState("");
   const isValidInput = inputValue.length > 4;
 
   const onClickTest = function () {
     const apiKey = getSavedApiKey();
-    if (apiKey) {
-      const lastFour = apiKey.slice(-4);
-      setApiKeyState({ exists: true, lastFour });
-    } else {
-      setApiKeyState({ exists: false, lastFour: "" });
-    }
-    message = apiKeyState.exists
-      ? `There is an API key saved! The last 4 characters are ${apiKeyState.lastFour}`
+    const newKeyState: ApiKeyState = apiKey
+      ? {
+          exists: true,
+          lastFour: apiKey.slice(-4),
+        }
+      : {
+          exists: false,
+          lastFour: "",
+        };
+    message = newKeyState.exists
+      ? `There is an API key saved! The last 4 characters are ${newKeyState.lastFour}`
       : "No API key saved";
     setIsActive(true);
   };
@@ -49,6 +53,12 @@ export function Config() {
       setIsActive(true);
       setInputValue("");
     }
+  };
+
+  const onClickClear = function () {
+    clearApiKey();
+    message = "API key has been cleared from local storage";
+    setIsActive(true);
   };
 
   return (
@@ -92,7 +102,6 @@ export function Config() {
             <code>{API_STORAGE_KEY}</code>
           </p>
         </div>
-
         <div className="row-layout">
           <input
             value={inputValue}
@@ -107,6 +116,15 @@ export function Config() {
             disabled={!isValidInput}
           >
             Set
+          </button>
+        </div>
+        <div>
+          If you wish to clear your API key from local storage, you can do so
+          here:
+        </div>
+        <div>
+          <button className="button test-api-key" onClick={onClickClear}>
+            Clear API key
           </button>
         </div>
         <div>
