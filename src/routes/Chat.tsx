@@ -52,7 +52,7 @@ export function Chat() {
       setMessages((prevState) => [
         ...prevState,
         {
-          role: ChatCompletionRequestMessageRoleEnum.System,
+          role: ChatCompletionRequestMessageRoleEnum.Assistant,
           content: getErrorMessage(error),
           timestamp: new Date().toISOString(),
         },

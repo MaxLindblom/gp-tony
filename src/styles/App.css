@@ -311,3 +311,18 @@ code {
   text-align: center;
   z-index: 13;
 }
+
+.config-wrapper {
+  width: 80%;
+  text-align: center;
+  align-items: center;
+}
+
+.test-api-key {
+  width: 40%;
+  height: 2rem;
+}
+
+.api-key-input {
+  width: 20rem;
+}
