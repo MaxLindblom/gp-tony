@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+# GPTony
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt GPTony](public/landing.jpeg "Example query")
 
-## Available Scripts
+A simple web wrapper for the chatGPT completion API. It should be live, here:
 
-In the project directory, you can run:
+https://gptony.netlify.app/
 
-### `yarn start`
+## Why
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is a hobby project, and an experiment with using chatGPT API to configure a local specialised chatbot.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+GPTony is best used as an assistance to software development, a slightly specialised UI to help with coding.
 
-### `yarn test`
+## Disclaimer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To use this app, you will need an active API key, which has billing enabled. Before using, please read through the [pricing section on openai.com](https://openai.com/pricing).
 
-### `yarn build`
+Currently GPTony supports two models:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- gpt-4
+- gpt-3.5-turbo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Read more about the different models [here](https://platform.openai.com/docs/models/overview).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Finally, the application <b>will</b> expose you API key in a request header, when making requests. Use at your own risk.
 
-### `yarn eject`
+## Known issues
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Mobile styling is shit. I would not recommend using on mobile
+- Header contraction/expansion might be broken on certain layouts and screen sizes
+- Responses with code samples might be too wide to render correctly on smaller screen widths, depending on the content
