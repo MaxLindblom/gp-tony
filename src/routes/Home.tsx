@@ -4,7 +4,7 @@ export function Home() {
   return (
     <div className="centered">
       <div className="content-wrapper column-layout">
-        <h1>Hey how you doin'? Welcome to GPTony.</h1>
+        <h1>Hey how you doin'? Welcome to GPTony</h1>
         <div>
           <p>
             This is a web-based wrapper for chatGPT, using the{" "}

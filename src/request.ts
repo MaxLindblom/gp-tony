@@ -20,11 +20,13 @@ export function setUpApi() {
   if (savedKey === null) {
     throw new Error("Unable to authenticate user - no API key available");
   }
-  openai = new OpenAIApi(
-    new Configuration({
-      apiKey: savedKey,
-    })
-  );
+
+  const config = new Configuration({
+    apiKey: savedKey,
+  });
+  delete config.baseOptions.headers["User-Agent"];
+
+  openai = new OpenAIApi(config);
 }
 
 export function setModel(modelName: string) {
