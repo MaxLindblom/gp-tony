@@ -69,6 +69,10 @@ code {
   text-decoration: underline;
 }
 
+.bold {
+  font-size: 1.3rem;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -282,7 +286,7 @@ code {
   border-top: 2px solid black;
   font-size: 5rem;
 }
-.menu-item + .menu-item {
+.menu-item:last-child {
   border-bottom: 2px solid black;
 }
 
@@ -312,7 +316,7 @@ code {
   z-index: 13;
 }
 
-.config-wrapper {
+.content-wrapper {
   width: 80%;
   text-align: center;
   align-items: center;

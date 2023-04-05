@@ -5,6 +5,9 @@ export default function Menu() {
     <div className="menu-wrapper">
       <div className="column-layout centered full-height menu">
         <div className="menu-item">
+          <Link to="/">Index</Link>
+        </div>
+        <div className="menu-item">
           <Link to="/config">Config</Link>
         </div>
         <div className="menu-item">

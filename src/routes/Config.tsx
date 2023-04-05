@@ -39,7 +39,7 @@ export function Config() {
 
   return (
     <div className="centered">
-      <div className="config-wrapper column-layout">
+      <div className="content-wrapper column-layout">
         <h1>Config</h1>
         <p>
           On this page you can set up your API key to get yourself ready to use

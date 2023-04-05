@@ -6,6 +6,7 @@ import useScroll from "./hooks/useScroll";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./routes/Layout";
 import { Config } from "./routes/Config";
+import { Home } from "./routes/Home";
 
 export default function App() {
   window.onscroll = useScroll;
@@ -15,6 +16,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
             <Route path="config" element={<Config />} />
             <Route path="chat" element={<Chat />} />
           </Route>
