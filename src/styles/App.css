@@ -319,14 +319,28 @@ code {
 .content-wrapper {
   width: 80%;
   text-align: center;
-  align-items: center;
+  display: -webkit-inline-flex;
+}
+.content-wrapper div:nth-child(even) {
+  padding-left: 2rem;
+  text-align: right;
+  flex-direction: row-reverse;
+}
+.content-wrapper div:nth-child(odd) {
+  padding-right: 2rem;
+  text-align: left;
 }
 
 .test-api-key {
-  width: 40%;
-  height: 2rem;
+  width: 60%;
+  height: 3rem;
 }
 
 .api-key-input {
   width: 20rem;
+}
+
+.model-button {
+  width: 40%;
+  height: 3rem;
 }
