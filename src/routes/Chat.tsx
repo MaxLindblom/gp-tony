@@ -65,6 +65,10 @@ export function Chat() {
   const onClear = function () {
     setMessages([]);
     clear();
+    const input = document.getElementById("input-textarea");
+    if (input !== null) {
+      input.focus();
+    }
   };
 
   return (
