@@ -73,7 +73,7 @@ export function Chat() {
 
   return (
     <div className="centered column-layout">
-      <div className="chat-container">
+      <div className="chat-container route-container">
         <Conversation isLoading={isLoading} messages={messages} />
         <ChatInput
           isLoading={isLoading}

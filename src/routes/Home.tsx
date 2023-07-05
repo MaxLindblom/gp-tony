@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function Home() {
   return (
     <div className="centered">
-      <div className="content-wrapper column-layout">
+      <div className="content-wrapper column-layout route-container">
         <h1>Hey how you doin'? Welcome to GPTony</h1>
         <div>
           <p>

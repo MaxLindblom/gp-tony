@@ -89,6 +89,10 @@ code {
   width: 100%;
 }
 
+.route-container {
+  margin-top: 180px !important;
+}
+
 .chat-container {
   width: 80vw;
   margin: 1rem;
@@ -230,14 +234,17 @@ code {
 .header-wrapper {
   height: var(--header-height);
   margin-bottom: 1rem;
+  width: 100%;
   background-color: white;
   z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .header {
   display: flex;
   text-align: center;
-  position: fixed;
   background-color: white;
   width: 100%;
   height: var(--header-height);
@@ -270,9 +277,7 @@ code {
   position: fixed;
   top: var(--header-height);
   left: 0;
-  width: 500px;
   height: calc(100% - var(--header-height));
-  max-width: 30vh;
   border-top: 4px solid black;
   border-right: 4px solid black;
 }
@@ -285,6 +290,7 @@ code {
   width: 100%;
   border-top: 2px solid black;
   font-size: 5rem;
+  margin: 0 1rem
 }
 .menu-item:last-child {
   border-bottom: 2px solid black;

@@ -68,7 +68,7 @@ export function Config() {
         setInactive={() => setIsActive(false)}
         message={message}
       ></PopUp>
-      <div className="content-wrapper column-layout">
+      <div className="content-wrapper column-layout route-container">
         <h1>Config</h1>
         <div>
           <p>
