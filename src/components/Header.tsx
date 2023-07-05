@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import useClickOutside from "../hooks/useClickOutside";
 import Menu from "./Menu";
+import { DarkModeToggle } from "./DarkModeToggle";
 
 export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -47,6 +48,7 @@ export default function Header() {
               title="Toggle menu"
             />
           </button>
+          <DarkModeToggle />
         </div>
         {isMenuOpen ? <Menu /> : false}
         <div className="header-title">GPTony</div>

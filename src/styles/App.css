@@ -1,12 +1,17 @@
 :root {
   --header-font: "Bebas Neue";
   --body-font: "Fjalla One";
-  --standard-border: 2px solid black;
   --header-height: 150px;
+  --background-color: white;
+  --text-color: black;
+  --standard-border: 2px solid var(--text-color);
 }
 
 body {
   font-family: var(--body-font);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  background: var(--background-color);
 }
 
 pre {
@@ -24,7 +29,7 @@ p {
 }
 
 a {
-  color: black;
+  color: var(--text-color);
 }
 
 code {
@@ -114,8 +119,8 @@ code {
 
 .left-bubble-content {
   border: var(--standard-border);
-  border-bottom: 4px solid black;
-  border-right: 4px solid black;
+  border-bottom: 4px solid var(--text-color);
+  border-right: 4px solid var(--text-color);
   border-radius: 2px;
   max-width: 80%;
 }
@@ -128,8 +133,8 @@ code {
 .right-bubble-content {
   text-align: right;
   border: var(--standard-border);
-  border-bottom: 4px solid black;
-  border-left: 4px solid black;
+  border-bottom: 4px solid var(--text-color);
+  border-left: 4px solid var(--text-color);
   border-radius: 2px;
   max-width: 80%;
 }
@@ -143,24 +148,24 @@ code {
 }
 
 .button {
-  background-color: black;
-  color: white;
+  background: var(--text-color);
+  color: var(--background-color);
   cursor: pointer;
   font-family: var(--body-font);
   border: var(--standard-border);
 }
 .button:hover {
-  background-color: white;
-  color: black;
+  background: var(--background-color);
+  color: var(--text-color);
 }
 .button:disabled {
   background-color: lightgray;
-  color: white;
+  color: var(--text-color);
   cursor: default;
 }
 
 .input-checkbox {
-  accent-color: black;
+  accent-color: var(--text-color);
   cursor: pointer;
 }
 
@@ -175,8 +180,8 @@ code {
 
 .code-snippet {
   border: var(--standard-border);
-  border-bottom: 4px solid black;
-  border-right: 4px solid black;
+  border-bottom: 4px solid var(--text-color);
+  border-right: 4px solid var(--text-color);
   border-radius: 1px;
   display: flex;
   position: relative;
@@ -187,11 +192,12 @@ code {
 
 .image-button {
   border: none;
-  background-color: white;
+  background: var(--background-color);
+  color: var(--text-color);
   cursor: pointer;
 }
 .image-button:hover {
-  filter: invert(1);
+  filter: invert(100%);
 }
 
 .copy-image-button {
@@ -230,7 +236,7 @@ code {
 .header-wrapper {
   height: var(--header-height);
   margin-bottom: 1rem;
-  background-color: white;
+  background: var(--background-color);
   z-index: 10;
 }
 
@@ -238,14 +244,14 @@ code {
   display: flex;
   text-align: center;
   position: fixed;
-  background-color: white;
+  background: var(--background-color);
   width: 100%;
   height: var(--header-height);
   top: 0;
   left: 0;
   font-family: var(--header-font);
   font-size: 4rem;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid var(--text-color);
   transition: 150ms;
   margin: 0;
   z-index: 10;
@@ -266,15 +272,15 @@ code {
 }
 
 .menu-wrapper {
-  background-color: white;
+  background: var(--background-color);
   position: fixed;
   top: var(--header-height);
   left: 0;
   width: 500px;
   height: calc(100% - var(--header-height));
   max-width: 30vh;
-  border-top: 4px solid black;
-  border-right: 4px solid black;
+  border-top: 4px solid var(--text-color);
+  border-right: 4px solid var(--text-color);
 }
 
 .menu {
@@ -283,11 +289,11 @@ code {
 
 .menu-item {
   width: 100%;
-  border-top: 2px solid black;
+  border-top: var(--standard-border);
   font-size: 5rem;
 }
 .menu-item:last-child {
-  border-bottom: 2px solid black;
+  border-bottom: var(--standard-border);
 }
 
 .menu-item a {
@@ -309,7 +315,7 @@ code {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background: var(--background-color);
   border: var(--standard-border);
   padding: 2rem;
   text-align: center;
