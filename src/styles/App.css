@@ -291,14 +291,32 @@ code {
   width: 100%;
   border-top: 2px solid black;
   font-size: 5rem;
-  margin: 0 1rem
+  margin: 0 1rem;
 }
 .menu-item:last-child {
   border-bottom: 2px solid black;
 }
+.menu-item:hover {
+  background-color: black;
+  transition: 100ms;
+}
+.menu-item a:hover {
+  color: white;
+  transition: 100ms;
+}
 
 .menu-item a {
   text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-item-selected {
+  background-color: black;
+}
+.menu-item-selected a {
+  color: white;
 }
 
 .overlay {

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import useClickOutside from "../hooks/useClickOutside";
-import Menu from "./Menu";
+import Menu from "./menu/Menu";
 
 export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
