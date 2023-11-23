@@ -196,6 +196,7 @@ code {
 }
 .image-button:hover {
   filter: invert(1);
+  transition: 100ms;
 }
 
 .copy-image-button {
