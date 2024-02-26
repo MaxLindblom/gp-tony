@@ -7,6 +7,7 @@ export default function Menu() {
         <MenuItem path="/" text="Index" />
         <MenuItem path="/config" text="Config" />
         <MenuItem path="/chat" text="Chat" />
+        <MenuItem path="/images" text="Images" />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import Layout from "./routes/Layout";
 import { Config } from "./routes/Config";
 import { Home } from "./routes/Home";
 import useDebounce from "./hooks/useDebounce";
+import { Images } from "./routes/Images";
 
 export default function App() {
   window.onscroll = useDebounce(80, useScroll);
@@ -20,6 +21,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="config" element={<Config />} />
             <Route path="chat" element={<Chat />} />
+            <Route path="images" element={<Images />} />
           </Route>
         </Routes>
       </BrowserRouter>

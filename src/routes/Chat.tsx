@@ -2,7 +2,7 @@ import {
   ChatCompletionRequestMessageRoleEnum,
   ChatCompletionResponseMessageRoleEnum,
 } from "openai";
-import React, { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { ChatInput } from "../components/ChatInput";
 import { Conversation } from "../components/Conversation";
 import { getErrorMessage } from "../error";
