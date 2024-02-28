@@ -1,16 +1,16 @@
-import {
-  ChatCompletionRequestMessageRoleEnum,
-  Configuration,
-  OpenAIApi,
-} from "openai";
+import OpenAI from "openai";
 import { getSavedApiKey } from "./storage";
+import {
+  ChatCompletionSystemMessageParam,
+  ChatCompletionUserMessageParam,
+} from "openai/resources/chat/completions";
 import { Message } from "./types";
 
-let openai: OpenAIApi;
-let model = "gpt-4";
+let openai: OpenAI;
+let model: string = "gpt-4";
 
-const systemPrompt = {
-  role: ChatCompletionRequestMessageRoleEnum.System,
+const systemPrompt: ChatCompletionSystemMessageParam = {
+  role: "system",
   content:
     "You are an italian mafia member called Tony assisting me, a software developer. I am the mob boss. You speak english",
 };
@@ -21,34 +21,25 @@ export function setUpApi() {
     throw new Error("Unable to authenticate user - no API key available");
   }
 
-  const config = new Configuration({
-    apiKey: savedKey,
-  });
-  delete config.baseOptions.headers["User-Agent"];
-
-  openai = new OpenAIApi(config);
+  // TODO: Using this thru the browser is unsafe, it reveals the api key
+  // https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety
+  openai = new OpenAI({ apiKey: savedKey, dangerouslyAllowBrowser: true });
 }
 
 export function setModel(modelName: string) {
   model = modelName;
 }
 
-// TODO: using this thru the browser is unsafe, it reveals the api key
-// Consider moving this to a backend call maybe?
 export function getChatCompletion(messages: Message[], query: string) {
   if (!openai) {
     setUpApi();
   }
-  const newPrompt = {
-    role: ChatCompletionRequestMessageRoleEnum.User,
+  const newPrompt: ChatCompletionUserMessageParam = {
+    role: "user",
     content: query,
   };
-  const requestMessages = messages.map(({ role, content }) => ({
-    role,
-    content,
-  }));
-  return openai.createChatCompletion({
+  return openai.chat.completions.create({
     model,
-    messages: [systemPrompt, ...requestMessages, newPrompt],
+    messages: [systemPrompt, ...messages, newPrompt],
   });
 }

@@ -6,6 +6,9 @@ interface RequestBubbleProps {
 }
 
 export function RequestBubble({ message }: RequestBubbleProps) {
+  if (!message.content || typeof message.content !== "string") {
+    message.content = "";
+  }
   return (
     <div className="right-bubble-container">
       <div className="right-bubble-content">

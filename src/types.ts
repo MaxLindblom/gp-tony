@@ -1,5 +1,14 @@
-import { ChatCompletionResponseMessage } from "openai";
+import {
+  ChatCompletionAssistantMessageParam,
+  ChatCompletionSystemMessageParam,
+  ChatCompletionUserMessageParam,
+} from "openai/resources/chat/completions";
 
-export interface Message extends ChatCompletionResponseMessage {
+export type ChatMessage =
+  | ChatCompletionSystemMessageParam
+  | ChatCompletionUserMessageParam
+  | ChatCompletionAssistantMessageParam;
+
+export type Message = ChatMessage & {
   timestamp: string;
-}
+};

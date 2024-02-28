@@ -10,6 +10,9 @@ interface ResponseBubbleProps {
 }
 
 export function ResponseBubble({ message }: ResponseBubbleProps) {
+  if (!message.content || typeof message.content !== "string") {
+    message.content = "";
+  }
   const regex = /(?<=```)[\s\S]*?(?=```)/g;
   const matches = message.content.match(regex);
   const startsWithCode = message.content.startsWith("```");

@@ -1,7 +1,3 @@
-import {
-  ChatCompletionRequestMessageRoleEnum,
-  ChatCompletionResponseMessageRoleEnum,
-} from "openai";
 import { FormEvent, useEffect, useState } from "react";
 import { ChatInput } from "../components/ChatInput";
 import { Conversation } from "../components/Conversation";
@@ -27,7 +23,7 @@ export function Chat() {
     setMessages((prevState) => [
       ...prevState,
       {
-        role: ChatCompletionResponseMessageRoleEnum.User,
+        role: "user",
         content: query,
         timestamp: new Date().toISOString(),
       },
@@ -37,7 +33,7 @@ export function Chat() {
       const prompt = onlyCode ? `${query} Only give me the code` : query;
       getChatCompletion(messages, prompt).then((response) => {
         // TODO: parse response and get only code snippets if onlyCode === true?
-        const message = response.data.choices[0].message;
+        const message = response.choices[0].message;
         if (message) {
           setMessages((prevState) => [
             ...prevState,
@@ -52,7 +48,7 @@ export function Chat() {
       setMessages((prevState) => [
         ...prevState,
         {
-          role: ChatCompletionRequestMessageRoleEnum.Assistant,
+          role: "assistant",
           content: getErrorMessage(error),
           timestamp: new Date().toISOString(),
         },
