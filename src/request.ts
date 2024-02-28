@@ -47,3 +47,13 @@ export function getChatCompletion(messages: Message[], query: string) {
     messages: [systemPrompt, ...requestMessages, newPrompt],
   });
 }
+
+export function getImages(prompt: string) {
+  if (!openai) {
+    setUpApi();
+  }
+  return openai.images.generate({
+    model: "dall-e-3",
+    prompt,
+  });
+}

@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, FormEvent, useState } from "react";
+import { KeyboardEvent, FormEvent, useState } from "react";
 
 interface ChatInputProps {
   isLoading: boolean;

@@ -1,4 +1,5 @@
 import { Message } from "../types";
+import { LoadingIndicator } from "./LoadingIndicator";
 import { RequestBubble } from "./RequestBubble";
 import { ResponseBubble } from "./ResponseBubble";
 
@@ -27,11 +28,7 @@ export function Conversation({ isLoading, messages }: ConversationProps) {
           );
         return false;
       })}
-      {isLoading && (
-        <div style={{ padding: "1rem" }}>
-          <div className="loading">Pondering</div>
-        </div>
-      )}
+      {isLoading && <LoadingIndicator />}
     </div>
   );
 }
