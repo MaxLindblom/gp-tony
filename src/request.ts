@@ -38,8 +38,12 @@ export function getChatCompletion(messages: Message[], query: string) {
     role: "user",
     content: query,
   };
+  const requestMessages = messages.map(({ role, content }) => ({
+    role,
+    content,
+  }));
   return openai.chat.completions.create({
     model,
-    messages: [systemPrompt, ...messages, newPrompt],
+    messages: [systemPrompt, ...requestMessages, newPrompt],
   });
 }

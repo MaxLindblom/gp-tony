@@ -37,7 +37,11 @@ export function Chat() {
         if (message) {
           setMessages((prevState) => [
             ...prevState,
-            { ...message, timestamp: new Date().toISOString() },
+            {
+              role: message.role,
+              content: message.content ?? "",
+              timestamp: new Date().toISOString(),
+            },
           ]);
           setIsLoading(false);
           return;
