@@ -1,17 +1,14 @@
 import { useCallback, useEffect } from "react";
-import { Message } from "../types";
 
-const LOCAL_STORAGE_KEY = "currentConversationState";
-
-const useLocalState = function (messages: Message[]) {
+const useLocalState = function (content: unknown[], storageKey: string) {
   useEffect(() => {
-    if (messages.length) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(messages));
+    if (content.length) {
+      localStorage.setItem(storageKey, JSON.stringify(content));
     }
-  }, [messages]);
+  }, [content]);
 
   const load = useCallback(() => {
-    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const saved = localStorage.getItem(storageKey);
     if (saved === null) {
       return [];
     }
@@ -19,7 +16,7 @@ const useLocalState = function (messages: Message[]) {
   }, []);
 
   const clear = useCallback(() => {
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    localStorage.removeItem(storageKey);
   }, []);
 
   return { load, clear };

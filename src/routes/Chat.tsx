@@ -6,10 +6,12 @@ import useLocalState from "../hooks/useLocalState";
 import { getChatCompletion } from "../request";
 import { Message } from "../types";
 
+const LOCAL_STORAGE_KEY = "currentConversationState";
+
 export function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { load, clear } = useLocalState(messages);
+  const { load, clear } = useLocalState(messages, LOCAL_STORAGE_KEY);
 
   useEffect(() => {
     setMessages(load());
