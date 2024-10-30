@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 import { ImagesInput } from "../components/ImagesInput";
 import { getImages } from "../request";
 import { LoadingIndicator } from "../components/LoadingIndicator";
@@ -41,7 +41,7 @@ export function Images() {
         {!isLoading && displayedImage && (
           <img src={displayedImage.url} alt={displayedImage.revised_prompt} />
         )}
-        {isLoading && <LoadingIndicator />}
+        <LoadingIndicator isLoading={isLoading} />
         <ImagesInput isLoading={isLoading} onSubmit={onSubmit} />
       </div>
     </div>

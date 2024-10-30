@@ -1,4 +1,4 @@
-import { Message } from "../types";
+import type { Message } from "../types";
 import { LoadingIndicator } from "./LoadingIndicator";
 import { RequestBubble } from "./RequestBubble";
 import { ResponseBubble } from "./ResponseBubble";
@@ -28,7 +28,7 @@ export function Conversation({ isLoading, messages }: ConversationProps) {
           );
         return false;
       })}
-      {isLoading && <LoadingIndicator />}
+      <LoadingIndicator isLoading={isLoading} />
     </div>
   );
 }
