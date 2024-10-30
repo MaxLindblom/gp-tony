@@ -98,6 +98,13 @@ code {
   margin: 1rem;
 }
 
+.image-display-area {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: var(--standard-border);
+}
+
 .messages {
   display: flex;
   gap: 1rem;
@@ -368,4 +375,14 @@ code {
 .model-button {
   width: 40%;
   height: 3rem;
+}
+
+.image-preview {
+  width: 10vw;
+  height: auto;
+}
+
+.image-gallery {
+  display: flex;
+  flex-direction: column;
 }

@@ -55,5 +55,7 @@ export function getImages(prompt: string) {
   return openai.images.generate({
     model: "dall-e-3",
     prompt,
+    response_format: "b64_json", // TODO: b64 is nice and all, but we exceed storage on two images which is not great
+    // On the other hand, urls disappear after an hour. What's the best tradeoff here?
   });
 }
