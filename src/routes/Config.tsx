@@ -20,7 +20,7 @@ export function Config() {
   const [inputValue, setInputValue] = useState("");
   const isValidInput = inputValue.length > 4;
 
-  const onClickTest = function () {
+  const onClickTest = () => {
     const apiKey = getSavedApiKey();
     const newKeyState: ApiKeyState = apiKey
       ? {
@@ -37,7 +37,7 @@ export function Config() {
     setIsActive(true);
   };
 
-  const setNewModel = function (model: string) {
+  const setNewModel = (model: string) => {
     message =
       model === "gpt-4"
         ? "Cutting edge, boss! Now using gpt-4 model"
@@ -46,7 +46,7 @@ export function Config() {
     setModel(model);
   };
 
-  const onClickSet = function () {
+  const onClickSet = () => {
     if (isValidInput) {
       setApiKey(inputValue);
       message = `Set openAiApiKey to ${inputValue}`;
@@ -55,7 +55,7 @@ export function Config() {
     }
   };
 
-  const onClickClear = function () {
+  const onClickClear = () => {
     clearApiKey();
     message = "API key has been cleared from local storage";
     setIsActive(true);
@@ -67,7 +67,7 @@ export function Config() {
         isActive={isActive}
         setInactive={() => setIsActive(false)}
         message={message}
-      ></PopUp>
+      />
       <div className="content-wrapper column-layout route-container">
         <h1>Config</h1>
         <div>
@@ -83,7 +83,11 @@ export function Config() {
           </p>
         </div>
         <div>
-          <button className="button test-api-key" onClick={onClickTest}>
+          <button
+            type="button"
+            className="button test-api-key"
+            onClick={onClickTest}
+          >
             Test API key
           </button>
         </div>
@@ -108,7 +112,7 @@ export function Config() {
             className="api-key-input use-body-font"
             type="text"
             onChange={(e) => setInputValue(e.target.value)}
-          ></input>
+          />
           <button
             className="button"
             type="button"
@@ -123,7 +127,11 @@ export function Config() {
           here:
         </div>
         <div>
-          <button className="button test-api-key" onClick={onClickClear}>
+          <button
+            type="button"
+            className="button test-api-key"
+            onClick={onClickClear}
+          >
             Clear API key
           </button>
         </div>
@@ -135,12 +143,14 @@ export function Config() {
         </div>
         <div className="row-layout">
           <button
+            type="button"
             className="button model-button"
             onClick={() => setNewModel("gpt-4")}
           >
             Use gpt-4
           </button>
           <button
+            type="button"
             className="button model-button"
             onClick={() => setNewModel("gpt-3.5-turbo")}
           >

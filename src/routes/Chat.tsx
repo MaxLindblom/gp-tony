@@ -1,10 +1,10 @@
-import { FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { ChatInput } from "../components/ChatInput";
 import { Conversation } from "../components/Conversation";
 import { getErrorMessage } from "../error";
 import useLocalState from "../hooks/useLocalState";
 import { getChatCompletion } from "../request";
-import { Message } from "../types";
+import type { Message } from "../types";
 
 const LOCAL_STORAGE_KEY = "currentConversationState";
 
@@ -15,13 +15,13 @@ export function Chat() {
 
   useEffect(() => {
     setMessages(load());
-  }, []);
+  }, [load]);
 
-  const onSubmit = async function (
+  const onSubmit = async (
     event: FormEvent,
     query: string,
     onlyCode: boolean
-  ) {
+  ) => {
     setMessages((prevState) => [
       ...prevState,
       {
@@ -64,7 +64,7 @@ export function Chat() {
     event.preventDefault();
   };
 
-  const onClear = function () {
+  const onClear = () => {
     setMessages([]);
     clear();
     const input = document.getElementById("input-textarea");

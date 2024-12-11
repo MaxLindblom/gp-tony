@@ -1,13 +1,13 @@
 import OpenAI from "openai";
 import { getSavedApiKey } from "./storage";
-import {
+import type {
   ChatCompletionSystemMessageParam,
   ChatCompletionUserMessageParam,
 } from "openai/resources/chat/completions";
-import { Message } from "./types";
+import type { Message } from "./types";
 
 let openai: OpenAI;
-let model: string = "gpt-4";
+let model = "gpt-4";
 
 const systemPrompt: ChatCompletionSystemMessageParam = {
   role: "system",

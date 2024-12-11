@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 function usePathChange(callback: () => unknown) {
-  const location = useLocation();
+  useLocation();
 
   useEffect(() => {
     callback();
-  }, [location.pathname]);
+  }, [callback]);
 }
 
 export default usePathChange;

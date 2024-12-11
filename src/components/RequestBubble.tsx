@@ -1,4 +1,4 @@
-import { Message } from "../types";
+import type { Message } from "../types";
 import { MessageMeta } from "./MessageMeta";
 
 interface RequestBubbleProps {

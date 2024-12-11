@@ -8,14 +8,14 @@ export default function Header() {
 
   useClickOutside(menuRef, () => setIsMenuOpen(false));
 
-  const handleClickMenuButton = function (
+  const handleClickMenuButton = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
+  ) => {
     setIsMenuOpen((prev) => !prev);
     event.preventDefault();
   };
 
-  const handleClickScrollButton = function () {
+  const handleClickScrollButton = () => {
     if (window.innerHeight + window.scrollY < document.body.scrollHeight) {
       window.scrollTo({
         top: document.body.scrollHeight,
@@ -35,6 +35,7 @@ export default function Header() {
       <div className="header centered" id="header">
         <div className="header-left centered">
           <button
+            type="button"
             className="image-button menu-button centered"
             onClick={handleClickMenuButton}
           >
@@ -52,6 +53,7 @@ export default function Header() {
         <div className="header-title">GPTony</div>
         <div className="header-right centered">
           <button
+            type="button"
             className="image-button scroll-to-bottom-button centered"
             onClick={handleClickScrollButton}
           >

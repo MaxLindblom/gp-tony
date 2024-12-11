@@ -7,7 +7,7 @@ interface CodeSnippetProps {
 export function CodeSnippet({ text }: CodeSnippetProps) {
   const [isClicked, setIsClicked] = useState(false);
 
-  const onClickCopy = function (text: string) {
+  const onClickCopy = (text: string) => {
     setIsClicked(true);
     navigator.clipboard.writeText(text);
     setTimeout(() => {
@@ -15,7 +15,7 @@ export function CodeSnippet({ text }: CodeSnippetProps) {
     }, 200);
   };
 
-  var index = text.indexOf("\n");
+  const index = text.indexOf("\n");
   let displayString: string;
   if (index >= 0) {
     displayString = text.substring(index + 1);
@@ -29,6 +29,7 @@ export function CodeSnippet({ text }: CodeSnippetProps) {
         <code>{displayString}</code>
       </pre>
       <button
+        type="button"
         className="copy-image-button image-button"
         onClick={() => onClickCopy(displayString)}
       >

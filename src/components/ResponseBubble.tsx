@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { Message } from "../types";
+import type { Message } from "../types";
 import { MessageMeta } from "./MessageMeta";
 import remarkGfm from "remark-gfm";
 import { useEffect } from "react";
@@ -18,7 +18,7 @@ export function ResponseBubble({ message }: ResponseBubbleProps) {
 
   useEffect(() => {
     const links = document.getElementsByTagName("a");
-    for (var i = 0; i < links.length; i++) {
+    for (let i = 0; i < links.length; i++) {
       links[i].setAttribute("target", "_blank");
     }
   });
@@ -29,28 +29,27 @@ export function ResponseBubble({ message }: ResponseBubbleProps) {
         <MessageMeta user={"Tony"} timestamp={message.timestamp} />
         <pre>
           {!startsWithCode && (
-            <ReactMarkdown
-              children={message.content.split("```")[0]}
-              remarkPlugins={[remarkGfm]}
-            />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {message.content.split("```")[0]}
+            </ReactMarkdown>
           )}
           {matches?.map((match, idx) => {
             if (idx % 2 === modOperand) {
               return (
                 <ReactMarkdown
                   key={`markdown-${idx}`}
-                  children={match}
                   remarkPlugins={[remarkGfm]}
-                />
+                >
+                  {match}
+                </ReactMarkdown>
               );
             }
             return <CodeSnippet key={`code-snippet-${idx}`} text={match} />;
           })}
           {!endsWithCode && matches !== null && (
-            <ReactMarkdown
-              children={message.content.split("```").slice(-1)[0]}
-              remarkPlugins={[remarkGfm]}
-            />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {message.content.split("```").slice(-1)[0]}
+            </ReactMarkdown>
           )}
         </pre>
       </div>

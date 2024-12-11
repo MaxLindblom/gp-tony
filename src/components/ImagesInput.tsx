@@ -1,4 +1,4 @@
-import { FormEvent, KeyboardEvent, useState } from "react";
+import { type FormEvent, type KeyboardEvent, useState } from "react";
 
 interface ImagesInputProps {
   isLoading: boolean;
@@ -8,14 +8,14 @@ interface ImagesInputProps {
 export function ImagesInput({ isLoading, onSubmit }: ImagesInputProps) {
   const [prompt, setPrompt] = useState("");
 
-  const handleKeyDown = function (event: KeyboardEvent<HTMLTextAreaElement>) {
+  const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
       document.getElementById("submit-button")?.click();
       event.preventDefault();
     }
   };
 
-  const handleSubmit = function (event: FormEvent) {
+  const handleSubmit = (event: FormEvent) => {
     onSubmit(event, prompt);
     setPrompt("");
   };

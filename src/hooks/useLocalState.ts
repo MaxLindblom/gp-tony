@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from "react";
 
-const useLocalState = function (content: unknown[], storageKey: string) {
+const useLocalState = (content: unknown[], storageKey: string) => {
   useEffect(() => {
     if (content.length) {
       localStorage.setItem(storageKey, JSON.stringify(content));
     }
-  }, [content]);
+  }, [content, storageKey]);
 
   const load = useCallback(() => {
     const saved = localStorage.getItem(storageKey);
@@ -13,11 +13,11 @@ const useLocalState = function (content: unknown[], storageKey: string) {
       return [];
     }
     return JSON.parse(saved);
-  }, []);
+  }, [storageKey]);
 
   const clear = useCallback(() => {
     localStorage.removeItem(storageKey);
-  }, []);
+  }, [storageKey]);
 
   return { load, clear };
 };

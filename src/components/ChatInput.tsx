@@ -1,4 +1,4 @@
-import { KeyboardEvent, FormEvent, useState } from "react";
+import { type KeyboardEvent, type FormEvent, useState } from "react";
 
 interface ChatInputProps {
   isLoading: boolean;
@@ -10,14 +10,14 @@ export function ChatInput({ isLoading, onSubmit, onClear }: ChatInputProps) {
   const [query, setQuery] = useState("");
   const [onlyCode, setOnlyCode] = useState(false);
 
-  const handleKeyDown = function (event: KeyboardEvent<HTMLTextAreaElement>) {
+  const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
       document.getElementById("submit-button")?.click();
       event.preventDefault();
     }
   };
 
-  const handleSubmit = function (event: FormEvent) {
+  const handleSubmit = (event: FormEvent) => {
     onSubmit(event, query, onlyCode);
     setQuery("");
   };
@@ -41,19 +41,19 @@ export function ChatInput({ isLoading, onSubmit, onClear }: ChatInputProps) {
         />
       </form>
       <div className="row-layout">
-        <input
-          className="input-checkbox"
-          checked={onlyCode}
-          onChange={(e) => setOnlyCode(e.target.checked)}
-          type="checkbox"
-        ></input>
         <label
           className="underlined cursor-pointer"
           onClick={() => setOnlyCode((isChecked) => !isChecked)}
         >
+          <input
+            className="input-checkbox"
+            checked={onlyCode}
+            onChange={(e) => setOnlyCode(e.target.checked)}
+            type="checkbox"
+          />
           Return only code
         </label>
-        <button className="button" onClick={onClear}>
+        <button type="button" className="button" onClick={onClear}>
           Clear chat
         </button>
       </div>

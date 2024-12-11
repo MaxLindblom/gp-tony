@@ -16,7 +16,7 @@ export function Images() {
     null
   );
 
-  const onSubmit = async function (event: FormEvent, prompt: string) {
+  const onSubmit = async (event: FormEvent, prompt: string) => {
     setIsLoading(true);
     try {
       getImages(prompt).then((response) => {
