@@ -8,7 +8,7 @@ import type { Message } from "./types";
 import { VERSION_STORAGE_KEY } from "./config";
 
 let openai: OpenAI;
-let model = localStorage.getItem(VERSION_STORAGE_KEY) || "gpt-3.5-turbo";
+let model = localStorage.getItem(VERSION_STORAGE_KEY) ?? "gpt-4";
 
 let systemPrompt: ChatCompletionSystemMessageParam | null = null;
 

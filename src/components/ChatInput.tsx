@@ -11,7 +11,7 @@ export function ChatInput({ isLoading, onSubmit, onClear }: ChatInputProps) {
   const [onlyCode, setOnlyCode] = useState(false);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && !event.shiftKey) {
       document.getElementById("submit-button")?.click();
       event.preventDefault();
     }
