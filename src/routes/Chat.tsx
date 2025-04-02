@@ -1,26 +1,26 @@
 import { type FormEvent, useEffect, useState } from "react";
 import { ChatInput } from "../components/ChatInput";
 import { Conversation } from "../components/Conversation";
+import { CONVERSATION_STORAGE_KEY } from "../config";
 import { getErrorMessage } from "../error";
 import useLocalState from "../hooks/useLocalState";
 import { getChatCompletion } from "../request";
 import type { Message } from "../types";
 
-const LOCAL_STORAGE_KEY = "currentConversationState";
-
 export function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { load, clear } = useLocalState(messages, LOCAL_STORAGE_KEY);
+  const { load, clear } = useLocalState(messages, CONVERSATION_STORAGE_KEY);
 
   useEffect(() => {
-    setMessages(load());
+    const loaded = load();
+    setMessages(loaded ?? []);
   }, [load]);
 
   const onSubmit = async (
     event: FormEvent,
     query: string,
-    onlyCode: boolean
+    onlyCode: boolean,
   ) => {
     setMessages((prevState) => [
       ...prevState,

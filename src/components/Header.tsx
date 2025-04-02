@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import useClickOutside from "../hooks/useClickOutside";
 import Menu from "./menu/Menu";
+import ProfileDropdowns from "./ProfileDropdowns";
 
 export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -9,7 +10,7 @@ export default function Header() {
   useClickOutside(menuRef, () => setIsMenuOpen(false));
 
   const handleClickMenuButton = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     setIsMenuOpen((prev) => !prev);
     event.preventDefault();
@@ -65,6 +66,7 @@ export default function Header() {
             />
           </button>
         </div>
+        <ProfileDropdowns />
       </div>
     </div>
   );

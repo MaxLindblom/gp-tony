@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 
-const useLocalState = (content: unknown[], storageKey: string) => {
+const useLocalState = (content: any, storageKey: string) => {
   useEffect(() => {
     if (content.length) {
       localStorage.setItem(storageKey, JSON.stringify(content));
@@ -9,10 +9,7 @@ const useLocalState = (content: unknown[], storageKey: string) => {
 
   const load = useCallback(() => {
     const saved = localStorage.getItem(storageKey);
-    if (saved === null) {
-      return [];
-    }
-    return JSON.parse(saved);
+    return saved ? JSON.parse(saved) : null;
   }, [storageKey]);
 
   const clear = useCallback(() => {

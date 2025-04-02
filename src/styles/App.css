@@ -31,6 +31,11 @@ code {
   font-size: 1.1rem;
 }
 
+select {
+  border: 3px solid black;
+  font-family: var(--body-font);
+}
+
 .use-header-font {
   font-family: var(--header-font);
 }
@@ -368,4 +373,8 @@ code {
 .model-button {
   width: 40%;
   height: 3rem;
+}
+
+.profile-container {
+  padding: 0 2.5rem;
 }
